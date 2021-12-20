@@ -8,14 +8,21 @@ class RefereceInline(admin.StackedInline):
 class CommentInline(admin.StackedInline):
     model = Comment
 
+class PostAdminSite(admin.AdminSite):
+    site_header = "Blog Post admin"
+    site_title = "Blog Post Admin Portal"
+    index_title = "Editor page"
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'status','created_on')
     list_filter = ("status",)
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     inlines = [RefereceInline,CommentInline,]
+    
+post_admin_site = PostAdminSite(name='post_admin')
 
-admin.site.register(Post, PostAdmin)
+post_admin_site.register(Post, PostAdmin)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
