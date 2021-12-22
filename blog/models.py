@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.db.models.fields import URLField
 from django_quill.fields import QuillField
 
-
 STATUS = (
     (0,"Draft"),
     (1,"Publish")
@@ -30,6 +29,11 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_on']
+     
+        permissions = [
+            ("change_post_status", "Can change the status of posts"),
+            ("close_post", "Can remove a post by setting its status as closed"),
+        ]
 
     def __str__(self):
         return self.title

@@ -21,7 +21,7 @@ from blog.admin import post_admin_site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog_admin/', post_admin_site.urls),
+    path('editor_admin/', post_admin_site.urls),
     path('',include('home.urls')),
 ]
 urlpatterns += [path(r'^i18n/', include('django.conf.urls.i18n')),]
