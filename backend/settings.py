@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'support',
     'ckeditor',
     'django_quill',
-    'home'
+    'home',
+    'custom_middleware',
 
 ]
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'custom_middleware.middleware.DemoMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
